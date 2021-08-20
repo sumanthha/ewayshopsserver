@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>ewayShops</title>
+      <style>
+         table {
+            width: 100%;
+         }
+      </style>
+   </head>
+   <body style="margin: 0 auto;font-family: sans-serif;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 0 auto; padding: 0;width:600px;box-shadow: 1px 0px 7px 0px #ccc;">
+         <tr>
+            <td style="vertical-align: top;">
+               <table>
+                  <tr>
+                     <td style="text-align: center;"><img src="https://ewayshop.way2smile.com:5000/media/static/images/logo.png" alt="logo-icon"></td>
+                  </tr>
+                  <tr>
+                     <td style="font-size:28px;padding-top:30px;padding-left:40px;">
+                        Your favourite neighborhood store<br>
+                        <hr style="width:30px;float:left;">
+                     </td>
+                  </tr>
+               </table>
+            </td>
+            <td style="text-align:right;"><img src="https://ewayshop.way2smile.com:5000/media/static/images/banner1.png" alt="banner1-icon"></td>
+         </tr>
+         <tr>
+            <td colspan="2" style="text-align:center;font-size:24px;padding-top:50px;"><h4>Thanks for your order</h4></td>
+         </tr>
+         <!-- <tr>
+            <td colspan="2" style="text-align:center;font-size:16px;padding-top:20px;padding-bottom:20px;padding:20px 35px;color:rgb(158, 158, 158)">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</td>
+         </tr> -->
+         <tr>
+            <td colspan="2" style="font-size:16px;padding-top:20px;padding-bottom:20px;padding:20px 35px;">
+               <h4>Order Summary:</h4>
+               <div style="padding: 10px;line-height:1.8;background-color: #f9f9f9;border-radius: 5px;">
+                   <table>
+                     <tr>
+                        <td>Order ID</td>
+                        <td>: {{order_id}}</td>
+                     </tr>
+                     <tr>
+                        <td>Order Date</td>
+                        <td>: {{order_date}}</td>
+                     </tr>
+                     <tr>
+                        <td>Prefer Pickup Time</td>
+                        <td>: {{prefer_pickup_date}}&nbsp;&nbsp; from {{prefer_pickup_start_time}} &nbsp;&nbsp; to {{prefer_pickup_end_time}}</td>
+                     </tr>
+                     <tr>
+                        <td>Pickup Person</td>
+                        <td>: {{pickup_person}}</td>
+                     </tr>
+                     <tr>
+                        <td>Phone number</td>
+                        <td>: {{phone_number}}</td>
+                     </tr>
+                     <tr>
+                        <td>Payment Status</td>
+                        <td>: {{payment_status}}</td>
+                     </tr>
+                  </table>
+               </div>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="2" style="font-size:16px;padding-top:20px;padding-bottom:20px;padding:20px 35px;">
+               <div>
+                  <table BORDER=0 CELLSPACING=0>
+                     <tr>
+                        <th style="text-align: center;padding: 15px;background: #5d5d5d;color: #fff;">S.No</th>
+                        <th style="text-align: center;padding: 15px;background: #5d5d5d;color: #fff;">Item & Description</th>
+                        <th style="text-align: center;padding: 15px;background: #5d5d5d;color: #fff;">Quantity</th>
+                        <th style="text-align: center;padding: 15px;background: #5d5d5d;color: #fff;">Price</th>
+                     </tr>
+                     {% for server in item_details %}
+                     
+                     <tr>
+                        <td style="text-align: center;padding: 15px;border-bottom: 1px solid #ccc;">{{forloop.counter}}</td>
+                        <td style="text-align: center;padding: 15px;border-bottom: 1px solid #ccc;">{{server.item.item_name}}</td>
+                        <td style="text-align: center;padding: 15px;border-bottom: 1px solid #ccc;">{{server.quantity}}</td>
+                        <td style="text-align: center;padding: 15px;border-bottom: 1px solid #ccc;"><span>$</span>{{server.total_price}}</td>
+                     </tr>
+                     
+                     {% endfor %}
+                     
+
+                     <tr>
+                        <td style="text-align: center;padding: 15px;"></td>
+                        <td style="text-align: center;padding: 15px;"></td>
+                        <td style="text-align: center;padding: 15px;">Sub Total</td>
+                        <td style="text-align: center;padding: 15px;"><span>$</span>{{cum.sub_total}}</td>
+                     </tr>
+                     <tr>
+                        <td style="text-align: center;padding: 15px;"></td>
+                        <td style="text-align: center;padding: 15px;"></td>
+                        <td style="text-align: center;padding: 15px;">Tax</td>
+                        <td style="text-align: center;padding: 15px;"><span>$</span>{{cum.total_tax}}</td>
+                     </tr>
+                     <tr>
+                        <td style="text-align: center;padding: 15px;"></td>
+                        <td style="text-align: center;padding: 15px;"></td>
+                        <td style="text-align: center;padding: 15px;">Total</td>
+                        <td style="text-align: center;padding: 15px;"><span>$</span>{{cum.total_amount}}</td>
+                     </tr>
+                  </table>
+               </div>
+            </td>
+         </tr>
+         
+         <tr>
+            <td colspan="2" style="font-size:16px;padding-top:20px;padding-bottom:20px;padding:20px 35px;">
+               <h4>Pickup Address:</h4>
+               <div>
+                  {{pickup_address}}
+               </div>
+            </td>
+         </tr>
+
+         <tr style="background-color:#72d826;padding:15px 20px;">
+            <td style="color:#fff;padding: 25px 20px;">Contact us for more information<br><span style="font-size:30px;color:#fff;font-weight:bold;">925-415-1857</span></td>
+            <td style="text-align:right;padding-right: 30px;">
+               <ul class="list-inline" style="padding-left: 0;list-style: none;margin-left: -5px;display: inline-flex;">
+                  <li style="display: inline-block;padding-right:8px;padding-left:8px;"><a style="color:#fff;text-decoration:none;" href="#"><img style="width:25px;"  src="https://ewayshop.way2smile.com:5000/media/static/images/facebook.png"></a></li>
+                  <li style="display: inline-block;padding-right:8px;padding-left:8px;"><a style="color:#fff;text-decoration:none;" href="#"><img style="width:25px;"  src="https://ewayshop.way2smile.com:5000/media/static/images/twitter.png"></a></li>
+               </ul>
+            </td>
+         </tr>
+         
+         <tr>
+            <td colspan="2" style="text-align:center;padding:15px 0;font-size:18px;">copyright&copy; 2021.eWayShops</td>
+         </tr>
+         
+     </table>
+   </body>
+</html>
