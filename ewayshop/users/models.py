@@ -254,7 +254,6 @@ class BranchItem(models.Model):
         managed = True
         db_table = 'branch_items'
 
-
 class SellerStatusChoice(models.TextChoices):
     
     PAID = u'Paid','Paid'
@@ -310,8 +309,6 @@ class OrderList(models.Model):
 
     def __str__(self):
         return str(self.order_id)
-
-
 
 class OrderReport(models.Model):
     users_id = models.ForeignKey(Profile, related_name='+', on_delete=models.CASCADE)
@@ -378,6 +375,7 @@ class Wishlist(models.Model):
     class Meta:
         managed = True
         db_table = 'wishlist'
+
 class Payment(models.Model):
     id = models.AutoField(primary_key=True)
     order = models.ForeignKey(Order, related_name='+', on_delete=models.CASCADE)
@@ -391,11 +389,9 @@ class Payment(models.Model):
     payment_id = models.CharField(max_length=250, blank=True, null=True)
     payment_time = models.DateTimeField(null=True)
     
-
     class Meta:
         managed = True
         db_table = 'payment'
 
     def __str__(self):
         return str(self.order_id)
-

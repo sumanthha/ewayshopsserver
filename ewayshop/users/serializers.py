@@ -36,7 +36,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['responseCode']=200
         return data
 
-
 class BussinessAdminSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -45,6 +44,7 @@ class BussinessAdminSerializer(serializers.ModelSerializer):
 
 class BranchSerializer(serializers.ModelSerializer):
     wishlist = serializers.SerializerMethodField()
+
     class Meta:
         model = BranchMstr
         fields =('id','branch_code','branch_name', 'branch_email', 'branch_description', 'branch_address', 'latitude', 'longitude','zipcode','branch_phone','photo','wishlist')
@@ -53,7 +53,6 @@ class BranchSerializer(serializers.ModelSerializer):
         user_id = self.context.get('user_id')
         return Wishlist.objects.filter(store_id=bnch.id, user_id = user_id).exists()
         
-
 class ProfitSerializer(serializers.ModelSerializer):
 
     class Meta:

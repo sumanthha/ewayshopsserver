@@ -114,8 +114,8 @@ DATABASES = {
     'NAME': env('DATABASE_NAME'),
     'USER': env('DATABASE_USER'),
     'PASSWORD': env('DATABASE_PASS'),
-    'HOST': '127.0.0.1',
-    'PORT': '3306',
+    'HOST': env('DATABASE_HOST'),
+    'PORT': env('DATABASE_PORT'),
         'OPTIONS': {
         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
@@ -124,14 +124,13 @@ DATABASES = {
 
 # FCM_SERVER_KEY=env('FCM_SERVER_KEY')
 
-
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'ewayshops@shaytechinc.com'
-SERVER_EMAIL = 'ewayshops@shaytechinc.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'ewayshops@shaytechinc.com'
-EMAIL_HOST_PASSWORD = 'password'
+DEFAULT_FROM_EMAIL = env('FROM_EMAIL')
+SERVER_EMAIL = env('SERVER_EMAIL')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Password validation
@@ -153,15 +152,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # PayPal
-paypal_client_id = 'Aa1CsY6os09O1HHu9VXuJdHcEn52CRDQaXONpYyqmgcCT0oEULzq9uxi3Meke-RoLff6A2KRrTHIWKFt'
-paypal_secret_key = 'EPPb16cX4CIOevs9vqMoevH6JosEJmtzlcgl0Gq7PsN4tgdbC2oFD_tcgc0UI_700gtpL1TrWCFJecMc'
-merchant_id='3A4STQARGQSCQ'
-paypal_base_url='https://api-m.sandbox.paypal.com/'
-# order_id_token = "95K45060PU123745K"
+paypal_client_id = env('paypal_client_id')
+paypal_secret_key = env('paypal_secret_key')
+merchant_id=env('merchant_id')
+paypal_base_url=env('paypal_base_url')
+
 #  URLS
-PayPal_SuccessURL='https://ewayshop.way2smile.com/customer/payment_success'
-PayPal_FailureURL='https://ewayshop.way2smile.com/customer/payment_failure'
-# PP_PAYMENT_STATUS = "https://api-m.sandbox.paypal.com/v2/checkout/orders/"
+PayPal_SuccessURL=env('PayPal_SuccessURL')
+PayPal_FailureURL=env('PayPal_FailureURL')
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

@@ -2,7 +2,6 @@ from django.db.models.query_utils import Q
 from django.core.exceptions import ObjectDoesNotExist
 from .models import *
 from users.serializers import *
-# from rest_framework import viewsets
 from users.permission import has_store_permission
 from users import json
 from django.views.decorators.csrf import csrf_exempt

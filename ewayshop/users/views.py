@@ -19,7 +19,6 @@ from django.contrib.auth.hashers import make_password,check_password
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from datetime import datetime, timedelta
-# from users.notification import send_notification
 from rest_framework_simplejwt import authentication
 from rest_framework.decorators import parser_classes
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
