@@ -16,6 +16,7 @@ import numpy as np
 import os
 from rest_framework.response import Response
 from rest_framework import generics, viewsets, status
+from ewayshop.settings import Store_URL
 
 class StoreSignUpView(View):
 
@@ -131,7 +132,7 @@ class StoreSignUpView(View):
             context = {
                 'email': email,
                 'name': name,
-                'reset_password_url': "http://13.233.62.76:3000/auth/reset-password/" + token['access'],
+                'reset_password_url': Store_URL+ token['access'],
             }
 
             subject = "Welcome to eWayshops"
@@ -791,7 +792,7 @@ def StoreForgetPassword(request):
             context = {
                 'email': email,
                 'name': name,
-                'reset_password_url': "http://13.233.62.76:3000/auth/reset-password/" + token['access'],
+                'reset_password_url': Store_URL+ token['access'],
             }
 
             subject = "Reset Password"

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from users.serializers import MyTokenObtainPairSerializer,BussinessAdminSerializer,ResetTokenSerializer,BranchSerializer,ManagerProfileSerializer,BranchManagerSerializer,CategorySerializer,SubCategorySerializer
 from rest_framework import generics, viewsets, status
 from users.permission import has_permission, has_admin_permission,has_customer_permission
-from ewayshop.settings import PayPal_SuccessURL,PayPal_FailureURL,merchant_id,paypal_base_url,paypal_client_id,paypal_secret_key
+from ewayshop.settings import PayPal_SuccessURL,PayPal_FailureURL,merchant_id,paypal_base_url,paypal_client_id,paypal_secret_key,Customer_Signup_URL,Customer_Forget_URL
 from users import json
 from users.helper import *
 from django.views.generic import View
@@ -107,7 +107,7 @@ class CustomerSignUpView(View):
 
             context = {
                 'email': email,
-                'signup_url': "https://ewayshop.way2smile.com/customer/auth/signup-next/?email="+email+"&phone_number="+phone_number+"&token="+token['access'],
+                'signup_url': Customer_Signup_URL+"?email="+email+"&phone_number="+phone_number+"&token="+token['access'],
             }
 
             subject = "Welcome to eWayshops"
@@ -191,7 +191,7 @@ def ForgetPassword(request):
         context = {
             'email': email,
             'name':name,
-            'forgot_password': "https://ewayshop.way2smile.com/customer/auth/reset-password/" + token['access'],
+            'forgot_password': Customer_Forget_URL + token['access'],
         }
 
         subject = "Reset Password"

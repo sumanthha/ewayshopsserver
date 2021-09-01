@@ -9,7 +9,7 @@ from rest_framework import generics, viewsets, status
 from rest_framework.decorators import action, api_view
 from users.permission import has_permission, has_admin_permission
 from django.shortcuts import get_object_or_404
-from ewayshop.settings import SECRET_KEY
+from ewayshop.settings import SECRET_KEY,Admin_URL
 from ewayshop import settings
 from . import json
 from django.views.decorators.csrf import csrf_exempt
@@ -1096,7 +1096,7 @@ def ForgetPassword(request):
 
             context = {
                 'email': email,
-                'reset_password_url': "http://13.233.62.76:4200/reset-password/" + token['access'],
+                'reset_password_url': Admin_URL + token['access'],
             }
 
             subject = "Reset Password"
@@ -1167,7 +1167,7 @@ class ResetPasswordView(viewsets.ViewSet):
 
                 context = {
                     'email': user.email,
-                    'reset_password_url': "http://13.233.62.76:4200/reset-password/" + token['access'],
+                    'reset_password_url': Admin_URL + token['access'],
                 }
 
                 subject = "Reset Password"
